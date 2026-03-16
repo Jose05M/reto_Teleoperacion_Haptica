@@ -1,28 +1,19 @@
 # Sistema de Teleoperación Bilateral Háptico con xArm Lite6
-
-**Desarrollado por:** Eduardo Sánchez Martínez (Líder del Mañana)
+**TE3001B:** Fundamentación de robótica
 **Institución:** Tecnológico de Monterrey
-**Tecnologías:** ROS 2 Humble, Python, C++, MoveIt Servo, micro-ROS (ESP32)
+**Tecnologías:** ROS 2 Humble, Python, MoveIt Servo, micro-ROS (ESP32)
 
 ---
 
 # 1. Descripción del Proyecto
 
-Este proyecto implementa un sistema de **teleoperación maestro–esclavo con retroalimentación háptica** utilizando dos manipuladores **xArm Lite6**. El objetivo principal es permitir que un operador controle remotamente un robot esclavo mientras recibe **retroalimentación de fuerza** cuando el robot remoto entra en contacto con un objeto.
+Este proyecto implementa un sistema de teleoperación maestro–esclavo con retroalimentación háptica utilizando dos manipuladores **xArm Lite6**. El objetivo principal es permitir que un operador controle remotamente un robot esclavo mientras recibe retroalimentación de fuerza cuando el robot remoto entra en contacto con un objeto.
 
 El sistema incluye:
 
-* Un **robot maestro** manipulado por el operador.
-* Un **robot esclavo** que replica los movimientos del maestro.
-* Un **sensor de fuerza conectado a un ESP32**, encargado de medir la interacción con el entorno.
-* Un sistema de control que **bloquea físicamente el robot maestro** cuando se detecta una colisión.
-
-Una característica importante del sistema es su **seguridad unidireccional**:
-
-* El robot maestro **se bloquea cuando el esclavo detecta una colisión**.
-* El operador puede **retroceder libremente para liberar el sistema**.
-
-Esto previene daños tanto al robot como al objeto con el que interactúa.
+* Un robot maestro manipulado por el operador.
+* Un robot esclavo que replica los movimientos del maestro.
+* Un sensor de fuerza conectado a un ESP32, encargado de medir la interacción con el entorno.
 
 ---
 
@@ -34,7 +25,7 @@ El sistema está compuesto por los siguientes elementos:
 
 * **Robot Maestro:** xArm Lite6 (modo de control de velocidad/estado).
 * **Robot Esclavo:** xArm Lite6 (modo seguidor).
-* **Sensor de Fuerza:** Celda de carga conectada a un ESP32.
+* **Sensor de Fuerza:** Resorte con sensor de distanncia conectsdo a un ESP32.
 * **Laptop de control:** Ejecuta ROS2 y los nodos de control.
 * **Red de comunicación:** Conexión Ethernet para robots y WiFi para ESP32.
 
@@ -52,7 +43,7 @@ El sistema está compuesto por los siguientes elementos:
    (Sensor de fuerza)
 ```
 
-La laptop funciona como **centro de control**, ejecutando los nodos ROS2 y el **micro-ROS Agent** que conecta el ESP32 con el sistema ROS.
+La laptop funciona como centro de control, ejecutando los nodos ROS2 y el micro-ROS Agent que conecta el ESP32 con el sistema ROS.
 
 ---
 
