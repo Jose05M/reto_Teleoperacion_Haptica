@@ -245,7 +245,7 @@ ros2 bag record -a -o grabacion_completa_haptica
 ```
 Y para su posterior analisis solo basta con ejecutar lo siguiente:
 ```
-ros2 bag info nombre_de_tu_carpeta
+ros2 bag play grabacion_completa_haptica
 ```
 Una vez echo esto, podemos graficar los datos ejecutando el nodo que grafica los datos.
 
