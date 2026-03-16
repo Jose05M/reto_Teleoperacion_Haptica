@@ -59,14 +59,8 @@ El sistema utiliza **ROS2 Humble** para la comunicación entre dispositivos.
 | `/master/joint_states`           | sensor_msgs/JointState | Estado del robot maestro         |
 | `/slave/joint_states`            | sensor_msgs/JointState | Estado del robot esclavo         |
 | `/servo_server/delta_joint_cmds` | control_msgs/JointJog  | Comandos de velocidad al esclavo |
-| `/master/vc_set_joint_velocity`  | xarm_msgs/MoveVelocity | Comando de velocidad del maestro |
+| `/master/robot_state`  | xarm_msgs/RobotMsg | Reporta e estado real del robot desde el hardware |
 
-## Servicios principales
-
-| Servicio            | Función                              |
-| ------------------- | ------------------------------------ |
-| `/master/set_state` | Controla el estado del robot maestro |
-| `/master/set_mode`  | Configura el modo de operación       |
 
 ---
 
