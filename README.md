@@ -59,7 +59,7 @@ El sistema utiliza **ROS2 Humble** para la comunicación entre dispositivos.
 | `/master/joint_states`           | sensor_msgs/JointState | Estado del robot maestro         |
 | `/slave/joint_states`            | sensor_msgs/JointState | Estado del robot esclavo         |
 | `/servo_server/delta_joint_cmds` | control_msgs/JointJog  | Comandos de velocidad al esclavo |
-| `/master/robot_state`  | xarm_msgs/RobotMsg | Reporta e estado real del robot desde el hardware |
+| `/master/robot_state`  | xarm_msgs/RobotMsg | Reporta el estado real del robot desde el hardware |
 
 
 ---
@@ -207,7 +207,7 @@ ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888
 
 ## 6. Verificar nodos
 
-Verificamos que todos los topicos existe.
+Verificamos que todos los topicos existen.
 ```
 ros2 topic list
 ```
