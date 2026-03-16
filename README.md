@@ -61,6 +61,43 @@ El sistema utiliza **ROS2 Humble** para la comunicación entre dispositivos.
 | `/servo_server/delta_joint_cmds` | control_msgs/JointJog  | Comandos de velocidad al esclavo |
 | `/master/robot_state`  | xarm_msgs/RobotMsg | Reporta el estado real del robot desde el hardware |
 
+## Nodos del Sistema
+
+Además de la comunicación mediante tópicos, el sistema está compuesto por tres nodos ROS2 que implementan la lógica principal de teleoperación.
+
+### Nodo Maestro (Haptic Control)
+
+Este nodo gestiona la retroalimentación háptica del sistema.
+
+- Se suscribe a la fuerza medida por el sensor (`/force_esp32`).
+- Monitorea las posiciones articulares del robot maestro (`/master/joint_states`).
+- Detecta colisiones cuando la fuerza supera un umbral establecido.
+- Activa los frenos internos del robot maestro mediante el servicio `set_state(3)` para detener el movimiento.
+- Implementa un **auto-reset**, liberando los frenos (`set_state(0)`) cuando el operador mueve el brazo en dirección contraria al impacto.
+
+### Nodo Esclavo (Follower Control)
+
+Este nodo implementa el control de seguimiento maestro–esclavo.
+
+- Se suscribe a las posiciones y velocidades articulares del robot maestro.
+- Obtiene el estado actual del robot esclavo (`/slave/joint_states`).
+- Calcula las velocidades articulares del esclavo mediante un controlador de seguimiento.
+- Publica comandos hacia MoveIt Servo (`/servo_server/delta_joint_cmds`).
+- Permite que el robot esclavo replique el movimiento del maestro en tiempo real.
+
+### Nodo de Visualización
+
+Este nodo permite monitorear el comportamiento del sistema durante los experimentos.
+
+- Se suscribe a la fuerza del sensor (`/force_esp32`).
+- Lee los estados articulares del robot maestro y esclavo.
+- Calcula el error de posición entre ambos robots.
+- Muestra gráficas en tiempo real de:
+  - fuerza medida,
+  - torques articulares,
+  - error maestro–esclavo.
+
+Esto permite analizar el desempeño del sistema de teleoperación y verificar su estabilidad durante la interacción con el entorno.
 
 ---
 
