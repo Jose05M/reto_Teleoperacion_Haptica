@@ -236,7 +236,7 @@ ros2 run teleop plot
 ```
 ---
 
-# 8. Registro de Datos (ROS Bag)
+# 9. Registro de Datos (ROS Bag)
 
 Para análisis posterior, el sistema permite grabar todos los tópicos utilizando:
 
@@ -258,7 +258,7 @@ Esto permite analizar posteriormente:
 ---
 
 
-# 14. Conclusión
+# 10. Conclusión
 
 Este proyecto demuestra la implementación de un sistema de teleoperación robótica con retroalimentación háptica, integrando:
 
